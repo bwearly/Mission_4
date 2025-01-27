@@ -9,8 +9,6 @@ class Program
         
         // Create a board game array to store the players choices
         char[,] board = new char[3, 3];
-        InitializeBoard(board); 
-        
         // track whose turn it is
         bool isXTurn = true;
         //track if the game is won
@@ -60,17 +58,6 @@ class Program
         }
     }
     
-    // Initialize the board with empty spaces
-    static void InitializeBoard(char[,] board)
-    {
-        for (int row = 0; row < 3; row++)
-        {
-            for (int col = 0; col < 3; col++)
-            {
-                board[row, col] = ' ';
-            }
-        }
-    }
 }
 
 
