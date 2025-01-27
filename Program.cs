@@ -3,14 +3,13 @@ using Microsoft.VisualBasic;
 using Mission_4;
 using static Mission_4.GameLogic;
 
-TicTacToeBoard boardObject = new TicTacToeBoard();
-GameLogic gl = new GameLogic(boardObject);
+char[,] board = new char[3,3];
+GameLogic gl = new GameLogic(board);
 
 // Welcome User to the Game 
 Console.WriteLine("Welcome to our Tic-Tac-Toe game!");
         
 // Create a board game array to store the players choices
-char[,] board = new char[3, 3];
 bool isXTurn = true;
 bool gameWon = false;
 int moves = 0;

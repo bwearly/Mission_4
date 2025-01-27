@@ -22,36 +22,27 @@ namespace Mission_4
             board = gameBoard; 
         }
 
-        public class TicTacToeBoard
-        {
-        
-        }
-
         // Method to display the board based on the user's input
         public void DisplayBoard(char[,] board)
         {
-            string[,] currentBoard = board.GetBoard(); // Get the current board state
             for (int row = 0; row < 3; row++)
-            for (int row = 0; row < 3; row++) // Loop through each row
             {
                 for (int col = 0; col < 3; col++)
                 {
-                    // Display the cell content or a "-" for empty cells
-                    Console.Write(board[row, col] == '\0' ? "-" : board[row, col].ToString();
+                    // Display "-" for empty cells or the actual value
+                    Console.Write(board[row, col] == '\0' ? "-" : board[row, col].ToString());
 
-                    // Add a separator between columns, but not at the end of the row
+                    // Add a separator between columns
                     if (col < 2)
                         Console.Write(" | ");
                 }
                 Console.WriteLine();
 
-                // Add a separator between rows, but not after the last row
+                // Add a separator between rows
                 if (row < 2)
                     Console.WriteLine("---------");
             }
         }
-
-        public bool MakeMove(int row, int col, char player)
 
         public bool MakeMove(int row, int col, char player)
         {
