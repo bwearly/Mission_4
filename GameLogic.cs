@@ -13,6 +13,43 @@ namespace GameLogic
     // Contain the method that recieves the game board array as input and returns if there is a winner and who it was
     internal class GameLogic
     {
+        public TicTacToeBoard board;
+
+        // Constructor - recieves the board
+        public GameLogic(TicTacToeBoard ticTacToeBoard)
+        {
+            board = ticTacToeBoard;
+        }
+
+        // Method to display the board based on the user's input
+
+        public void DisplayBoard()
+        {
+            string[,] currentBoard = board.GetBoard();
+            for (int row = 0; row < 3; row++)
+            {
+                Console.Write(currentBoard[row, col] == "" ? "-"): currentBoard[row, col]);
+            if col(col < 2) Console.Write(" | ");
+            }
+
+            Console.WriteLine();
+            if (row < 2) Console.WriteLine("--------");
+        }
+
+        public bool MakeMove(int row, int col, string player)
+        {
+            try
+            {
+                board.UpdateCell(row, col, player);
+                return true;
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return false;
+            }
+        }
+
         public char CheckWinner(char[,] board)
         {
             // For loop to make sure that there is three in a row
@@ -35,48 +72,8 @@ namespace GameLogic
             return ' ';
         }
 
-        public TicTacToeBoard board;
-
-        // Constructor - recieves the board
-        public GameLogic(TicTacToeBoard ticTacToeBoard)
-        {
-            board = ticTacToeBoard;
-        }
-
-        // Method to display the board based on the user's input
-
-        public void DisplayBoard()
-        {
-            string[,] currentBoard = board.GetBoard();
-            for (int row = 0; row < 3 ; row++)
-            {
-                Console.Write(currentBoard[row, col] == "" ? "-"): currentBoard[row, col]);
-            if col(col < 2) Console.Write(" | ");
-            }
-            Console.WriteLine();
-            if (row < 2) Console.WriteLine("--------");
-        }
-
-
         // Method To Process a move
 
-        public bool MakeMove(int row, int col, string player)
-        {
-            try
-            {
-                board.UpdateCell(row, col, player);
-                return true;
-            }
-            catch (InalidOperationException ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                return false;
-            }
-        }
-
-
-            return ' ';
-        }
-
+        
     }
 }
