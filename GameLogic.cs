@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameLogic
+namespace Mission_4
 {
     // recieve the board array from the driver class
 
@@ -21,6 +21,7 @@ namespace GameLogic
         public GameLogic(TicTacToeBoard ticTacToeBoard)
         {
             board = ticTacToeBoard;
+        }
 
         // Method to display the board based on the user's input
         public void DisplayBoard()
