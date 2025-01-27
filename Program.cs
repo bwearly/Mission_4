@@ -5,19 +5,19 @@ using static Mission_4.GameLogic;
 
 char[,] board = new char[3,3];
 GameLogic gl = new GameLogic(board);
-
-// Welcome User to the Game 
-Console.WriteLine("Welcome to our Tic-Tac-Toe game!");
         
 // Create a board game array to store the players choices
 bool isXTurn = true;
 bool gameWon = false;
 int moves = 0;
+char player;
+
+// Welcome User to the Game 
+Console.WriteLine("Welcome to our Tic-Tac-Toe game!");
 
 // Loop until there is a winner or the board is full
 while (!gameWon && moves < 9)
 {
-    Console.Clear();
     gl.DisplayBoard(board);
 
     // Ask each player during their turn for their choice and update the game board
@@ -27,28 +27,28 @@ while (!gameWon && moves < 9)
     Console.Write("Enter the column (0-2): ");
     int col = int.Parse(Console.ReadLine());
 
-    if (row < 0 || row > 2 || col < 0 || col > 2 || board[row, col] != ' ')
+    player = isXTurn ? 'X' : 'O';
+
+    if (gl.MakeMove(row, col, player))
     {
-        Console.WriteLine("Invalid move. Try again.");
-        Console.ReadLine(); // Pause to let the player see the error message
-        continue;
+        moves++;
+        // Check for the winner by calling the method in the supporting class
+        char winner = gl.CheckWinner(board);
+
+        if (winner != ' ')
+        {
+            gameWon = true;
+            gl.DisplayBoard(board);
+            Console.WriteLine($"Player {winner} wins! Congratulations!");
+            break;
+        }
+
+        // Switch turns and increment move count
+        isXTurn = !isXTurn;
     }
-
-    // Update the board with the player's choice
-    board[row, col] = isXTurn ? 'X' : 'O';
-
-    // Check for the winner by calling the method in the supporting class
-    char winner = gl.CheckWinner(board);
-
-    if (winner != ' ')
+    else
     {
-        gameWon = true;
-        Console.Clear();
-        gl.DisplayBoard(board);
-        Console.WriteLine($"Player {winner} wins! Congratulations!");
+        Console.WriteLine("Invalid move. Press enter to try again.");
+        Console.ReadLine();
     }
-
-    // Switch turns and increment move count
-    isXTurn = !isXTurn;
-    moves++;
 }
