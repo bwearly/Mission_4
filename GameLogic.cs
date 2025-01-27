@@ -46,9 +46,27 @@ namespace GameLogic
             if col(col < 2) Console.Write(" | ");
             }
             Console.WriteLine();
-            if (row < >)
-       
+            if (row < 2) Console.WriteLine("--------");
         }
+
+
+        // Method To Process a move
+
+        public bool MakeMove(int row, int col, string player)
+        {
+            try
+            {
+                board.UpdateCell(row, col, player);
+                return true;
+            }
+            catch (InalidOperationException ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return false;
+            }
+        }
+
+
             return ' ';
         }
 
