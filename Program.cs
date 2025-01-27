@@ -9,18 +9,14 @@ Console.WriteLine("Welcome to our Tic-Tac-Toe game!");
         
 // Create a board game array to store the players choices
 char[,] board = new char[3, 3];
-// track whose turn it is
 bool isXTurn = true;
-//track if the game is won
 bool gameWon = false;
-//count number of moves
 int moves = 0;
 
 // Loop until there is a winner or the board is full
 while (!gameWon && moves < 9)
 {
     Console.Clear();
-    // Print the board by calling the method in the supporting class
     DisplayBoard(board);
 
     // Ask each player during their turn for their choice and update the game board
@@ -46,9 +42,7 @@ while (!gameWon && moves < 9)
     if (gameWon)
     {
         Console.Clear();
-        // Print the board by calling the method in the supporting class
         DisplayBoard(board);
-        // Notify the players when a win has occured and which player has won
         Console.WriteLine($"Player {winner} wins! Congratulations!");
     }
 

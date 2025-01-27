@@ -23,6 +23,11 @@ namespace Mission_4
             board = ticTacToeBoard;
         }
 
+        public class TicTacToeBoard
+        {
+        
+        }
+
         // Method to display the board based on the user's input
         public void DisplayBoard()
         {
@@ -45,7 +50,6 @@ namespace Mission_4
                     Console.WriteLine("---------");
             }
         }
-
 
         public bool MakeMove(int row, int col, string player)
         {
