@@ -13,7 +13,12 @@ namespace GameLogic
     // Contain the method that recieves the game board array as input and returns if there is a winner and who it was
     internal class GameLogic
     {
+        public TicTacToeBoard board;
 
-
+        // Constructor - recieves the board
+        public GameLogic(TicTacToeBoard ticTacToeBoard)
+        {
+            board = ticTacToeBoard;
+        }
     }
 }
