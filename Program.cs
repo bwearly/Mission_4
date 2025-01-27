@@ -45,6 +45,11 @@ while (!gameWon && moves < 9)
 
         // Switch turns and increment move count
         isXTurn = !isXTurn;
+
+        if (moves == 9)
+        {
+            Console.WriteLine("It was a draw, thanks for playing!");
+        }
     }
     else
     {
