@@ -14,25 +14,23 @@ namespace Mission_4
     // Contain the method that recieves the game board array as input and returns if there is a winner and who it was
     internal class GameLogic
     {
-        public required TicTacToeBoard board;
-        private int row = 0;
-
+        // Char array to represent the board 
+        private char[,] board;
         // Constructor - recieves the board
-        public GameLogic(TicTacToeBoard ticTacToeBoard)
+        public GameLogic(char[,] gameBoard)
         {
-            board = ticTacToeBoard;
+            board = gameBoard; 
         }
 
         // Method to display the board based on the user's input
         public void DisplayBoard()
         {
-            string[,] currentBoard = board.GetBoard(); // Get the current board state
             for (int row = 0; row < 3; row++) // Loop through each row
             {
                 for (int col = 0; col < 3; col++) // Loop through each column in the row
                 {
                     // Display the cell content or a "-" for empty cells
-                    Console.Write(currentBoard[row, col] == "" ? "-" : currentBoard[row, col]);
+                    Console.Write(board[row, col] == '\0' ? "-" : board[row, col].ToString();
 
                     // Add a separator between columns, but not at the end of the row
                     if (col < 2)
@@ -47,17 +45,19 @@ namespace Mission_4
         }
 
 
-        public bool MakeMove(int row, int col, string player)
+        public bool MakeMove(int row, int col, char player)
         {
-            try
+            // Check if the move is valid
+            if (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row, col] == '\0')
             {
-                board.UpdateCell(row, col, player);
-                return true;
+                // Update boards with the user's move
+                board[row, col] = player;
+                return true; // if the move is successful return true
             }
-            catch (InvalidOperationException ex)
+            else
             {
-                Console.WriteLine($"Error: {ex.Message}");
-                return false;
+                Console.WriteLine("Invalid Move. Try again.");
+                return false; // Return flase if move is invalid
             }
         }
 
