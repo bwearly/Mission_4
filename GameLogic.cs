@@ -20,5 +20,21 @@ namespace GameLogic
         {
             board = ticTacToeBoard;
         }
+
+        // Method to display the board based on the user's input
+
+        public void DisplayBoard()
+        {
+            string[,] currentBoard = board.GetBoard();
+            for (int row = 0; row < 3 ; row++)
+            {
+                Console.Write(currentBoard[row, col] == "" ? "-"): currentBoard[row, col]);
+            if col(col < 2) Console.Write(" | ");
+            }
+            Console.WriteLine();
+            if (row < >)
+       
+        }
+
     }
 }
