@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,7 @@ namespace GameLogic
     internal class GameLogic
     {
         public TicTacToeBoard board;
+        private int row;
 
         // Constructor - recieves the board
         public GameLogic(TicTacToeBoard ticTacToeBoard)
