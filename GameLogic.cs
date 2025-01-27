@@ -27,20 +27,26 @@ namespace GameLogic
 
         public void DisplayBoard()
         {
-            string[,] currentBoard = board.GetBoard();
-            private int col = 0;
-
-            for (int row = 0; row< 3; row++)
+            string[,] currentBoard = board.GetBoard(); // Get the current board state
+            for (int row = 0; row < 3; row++) // Loop through each row
             {
-                Console.Write(currentBoard[row, col] == "" ? "-"): currentBoard[row, col]);
-            if col(col < 2) Console.Write(" | ");
+                for (int col = 0; col < 3; col++) // Loop through each column in the row
+                {
+                    // Display the cell content or a "-" for empty cells
+                    Console.Write(currentBoard[row, col] == "" ? "-" : currentBoard[row, col]);
 
-            Console.WriteLine();
-            if (row< 2) 
-            {
-                Console.WriteLine("--------");
+                    // Add a separator between columns, but not at the end of the row
+                    if (col < 2)
+                        Console.Write(" | ");
+                }
+                Console.WriteLine(); // Move to the next row after all columns
+
+                // Add a separator between rows, but not after the last row
+                if (row < 2)
+                    Console.WriteLine("---------");
             }
         }
+
 
         public bool MakeMove(int row, int col, string player)
         {

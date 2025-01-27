@@ -18,7 +18,8 @@ class Program
         //count number of moves
         int moves = 0;
         
-        while (!gameWon && moves < 9) // Loop until there is a winner or the board is full
+        // Loop until there is a winner or the board is full
+        while (!gameWon && moves < 9) 
         {
             Console.Clear();
             // Print the board by calling the method in the supporting class
