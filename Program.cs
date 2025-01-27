@@ -16,12 +16,15 @@ class Program
         //count number of moves
         int moves = 0;
         
+        // Create an instance of the GameLogic class
+        GameLogic gameLogic = new GameLogic();
+        
         // Loop until there is a winner or the board is full
         while (!gameWon && moves < 9) 
         {
             Console.Clear();
             // Print the board by calling the method in the supporting class
-            GameLogic.DisplayBoard(board); 
+            gameLogic.DisplayBoard(board); 
 
             // Ask each player during their turn for their choice and update the game board
             Console.WriteLine($"Player {(isXTurn ? "X" : "O")}, it's your turn.");
@@ -41,13 +44,13 @@ class Program
             board[row, col] = isXTurn ? 'X' : 'O';
 
             // Check for the winner by calling the method in the supporting class
-            gameWon = GameLogic.CheckWinner(board, out char winner);
+            gameWon = gameLogic.CheckWinner(board, out char winner);
 
             if (gameWon)
             {
                 Console.Clear();
                 // Print the board by calling the method in the supporting class
-                GameLogic.DisplayBoard(board);
+                gameLogic.DisplayBoard(board);
                 // Notify the players when a win has occured and which player has won
                 Console.WriteLine($"Player {winner} wins! Congratulations!");
             }
