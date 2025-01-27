@@ -14,17 +14,15 @@ namespace GameLogic
     // Contain the method that recieves the game board array as input and returns if there is a winner and who it was
     internal class GameLogic
     {
-        public TicTacToeBoard board;
-        private int row;
+        public required TicTacToeBoard board;
+        private int row = 0;
 
         // Constructor - recieves the board
         public GameLogic(TicTacToeBoard ticTacToeBoard)
         {
             board = ticTacToeBoard;
-        }
 
         // Method to display the board based on the user's input
-
         public void DisplayBoard()
         {
             string[,] currentBoard = board.GetBoard(); // Get the current board state
@@ -83,9 +81,8 @@ namespace GameLogic
             // Returns the winner
             return ' ';
         }
-
-        // Method To Process a move
-
-        
     }
 }
+
+
+
