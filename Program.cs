@@ -1,8 +1,10 @@
 ﻿using System.Reflection.Metadata;
 using Microsoft.VisualBasic;
 using Mission_4;
+using static Mission_4.GameLogic;
 
-GameLogic gl = new GameLogic();
+TicTacToeBoard boardObject = new TicTacToeBoard();
+GameLogic gl = new GameLogic(boardObject);
 
 // Welcome User to the Game 
 Console.WriteLine("Welcome to our Tic-Tac-Toe game!");
@@ -17,7 +19,7 @@ int moves = 0;
 while (!gameWon && moves < 9)
 {
     Console.Clear();
-    DisplayBoard(board);
+    gl.DisplayBoard(board);
 
     // Ask each player during their turn for their choice and update the game board
     Console.WriteLine($"Player {(isXTurn ? "X" : "O")}, it's your turn.");
@@ -37,12 +39,13 @@ while (!gameWon && moves < 9)
     board[row, col] = isXTurn ? 'X' : 'O';
 
     // Check for the winner by calling the method in the supporting class
-    gameWon = CheckWinner(board, out char winner);
+    char winner = gl.CheckWinner(board);
 
-    if (gameWon)
+    if (winner != ' ')
     {
+        gameWon = true;
         Console.Clear();
-        DisplayBoard(board);
+        gl.DisplayBoard(board);
         Console.WriteLine($"Player {winner} wins! Congratulations!");
     }
 
@@ -50,8 +53,3 @@ while (!gameWon && moves < 9)
     isXTurn = !isXTurn;
     moves++;
 }
-
-
-
-
-

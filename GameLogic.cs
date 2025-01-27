@@ -29,12 +29,12 @@ namespace Mission_4
         }
 
         // Method to display the board based on the user's input
-        public void DisplayBoard()
+        public void DisplayBoard(char[,] board)
         {
             string[,] currentBoard = board.GetBoard(); // Get the current board state
-            for (int row = 0; row < 3; row++) // Loop through each row
+            for (int row = 0; row < 3; row++)
             {
-                for (int col = 0; col < 3; col++) // Loop through each column in the row
+                for (int col = 0; col < 3; col++)
                 {
                     // Display the cell content or a "-" for empty cells
                     Console.Write(currentBoard[row, col] == "" ? "-" : currentBoard[row, col]);
@@ -43,7 +43,7 @@ namespace Mission_4
                     if (col < 2)
                         Console.Write(" | ");
                 }
-                Console.WriteLine(); // Move to the next row after all columns
+                Console.WriteLine();
 
                 // Add a separator between rows, but not after the last row
                 if (row < 2)
@@ -51,7 +51,7 @@ namespace Mission_4
             }
         }
 
-        public bool MakeMove(int row, int col, string player)
+        public bool MakeMove(int row, int col, char player)
         {
             try
             {
@@ -71,13 +71,12 @@ namespace Mission_4
             for (int i = 0; i < 3; i++)
             {
                 // 
-                if (board[i, 0] == ' ' && board[i, 0] == board[i, 1] && board[i, 1] == board[i, 2])
+                if (board[i, 0] != ' ' && board[i, 0] == board[i, 1] && board[i, 1] == board[i, 2])
                     return board[i, 0];
                 if (board[0, i] != ' ' && board[0, i] == board[1, i] && board[1, i] == board[2, i])
                     return board[0, i];
             }
 
-            // 
             if (board[0, 0] != ' ' && board[0, 0] == board[1, 1] && board[1, 1] == board[2, 2])
                 return board[0, 0];
             if (board[0, 2] != ' ' && board[0, 2] == board[1, 1] && board[1, 1] == board[2, 0])
