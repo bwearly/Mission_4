@@ -27,6 +27,10 @@ namespace GameLogic
                 return board[0, 0];
             if (board[0, 2] != ' ' && board[0, 2] == board[1, 1] && board[1, 1] == board[2, 0])
                 return board[0, 2];
+
+            return ' ';
+        }
+
         public TicTacToeBoard board;
 
         // Constructor - recieves the board
@@ -48,8 +52,6 @@ namespace GameLogic
             Console.WriteLine();
             if (row < >)
        
-        }
-            return ' ';
         }
 
     }
