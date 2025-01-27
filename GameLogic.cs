@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,7 @@ namespace GameLogic
     internal class GameLogic
     {
         public TicTacToeBoard board;
+        private int row;
 
         // Constructor - recieves the board
         public GameLogic(TicTacToeBoard ticTacToeBoard)
@@ -26,14 +28,18 @@ namespace GameLogic
         public void DisplayBoard()
         {
             string[,] currentBoard = board.GetBoard();
-            for (int row = 0; row < 3; row++)
+            private int col = 0;
+
+            for (int row = 0; row< 3; row++)
             {
                 Console.Write(currentBoard[row, col] == "" ? "-"): currentBoard[row, col]);
             if col(col < 2) Console.Write(" | ");
-            }
 
             Console.WriteLine();
-            if (row < 2) Console.WriteLine("--------");
+            if (row< 2) 
+            {
+                Console.WriteLine("--------");
+            }
         }
 
         public bool MakeMove(int row, int col, string player)
